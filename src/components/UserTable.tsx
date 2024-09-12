@@ -30,10 +30,18 @@ interface User {
     website: string;
     company: Company;
 }
+type initialColumnVisibility = {
+    name: boolean,
+    email: boolean,
+    'address.suite': boolean,
+    'address.city': boolean,
+    phone: boolean,
+    website: boolean,
+    'company.name': boolean,
+};
 
 const UserTable: React.FC = () => {
     const [apiData, setApiData] = useState<User[]>([])
-    const [sorting, setSorting] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,38 +60,46 @@ const UserTable: React.FC = () => {
             accessorKey: 'name',
             header: 'Name',
             enableSorting: true,
+            visibility: true,
         },
         {
             accessorKey: 'email',
             header: 'Email',
             enableSorting: true,
+            visibility: true,
         },
         {
             accessorKey: 'address.suite',
             header: 'Suite',
             enableSorting: false,
+            visibility: true,
         },
         {
             accessorKey: 'address.city',
             header: 'City',
             enableSorting: false,
+            visibility: true,
         },
         {
             accessorKey: 'phone',
             header: 'Phone',
             enableSorting: true,
+            visibility: true,
         },
         {
             accessorKey: 'website',
             header: 'Website',
             enableSorting: false,
+            visibility: true,
         },
         {
             accessorKey: 'company.name',
             header: 'Company Name',
             enableSorting: true,
+            visibility: true,
         },]
         , [])
+
     return (
         <React.Fragment>
             <Tableback data={apiData} columns={columns} />
