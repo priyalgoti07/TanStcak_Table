@@ -3,9 +3,10 @@ import { ColumnDef, flexRender, getCoreRowModel, getSortedRowModel, SortingState
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { useMemo, useState } from 'react';
 
+
 interface TableProps<TData> {
     data: TData[],
-    columns: ColumnDef<TData, any> & { visibility?: boolean } [],
+    columns: ColumnDef<TData, any>[],
 }
 
 const Tableback = <TData,>({ data, columns }: TableProps<TData>) => {
@@ -17,7 +18,7 @@ const Tableback = <TData,>({ data, columns }: TableProps<TData>) => {
             
             if ('accessorKey' in column && column.accessorKey) {
 
-                visibilityState[column.accessorKey as string] = column.visibility !== undefined ? column.visibility : true;  // Use passed visibility or default to true
+                visibilityState[column.accessorKey as string] = column.enableHiding !== undefined ? column.enableHiding : true;  // Use passed visibility or default to true
             }
         });
         return visibilityState;
