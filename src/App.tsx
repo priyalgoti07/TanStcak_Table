@@ -1,10 +1,11 @@
-import ColVisibility from './components/ColVisibility'
+import { TableTan } from './components/TableTan'
 import UserTable from './components/UserTable'
 
 const App = () => {
   return (
     <div>
-      <UserTable />
+      <TableTan />
+      {/* <UserTable/> */}
       {/* <ColVisibility /> */}
     </div>
   )
